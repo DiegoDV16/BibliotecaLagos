@@ -24,7 +24,7 @@ public class categoriaController {
     public ResponseEntity<List<Categoria>> obtenerCategorias() {
 
         List<Categoria> lista =
-                categoriaService.obtenerCategorias();
+        categoriaService.obtenerCategorias();
 
         if(lista.isEmpty()) {
             return ResponseEntity.noContent().build();
@@ -38,13 +38,13 @@ public class categoriaController {
             @PathVariable Integer id) {
 
         Categoria categoria =
-                categoriaService.buscarPorId(id);
+        categoriaService.buscarPorId(id);
 
         if(categoria == null) {
 
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("Categoria no encontrada");
+                return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body("Categoria no encontrada");
         }
 
         return ResponseEntity.ok(categoria);
@@ -55,13 +55,13 @@ public class categoriaController {
             @PathVariable String nombre) {
 
         Categoria categoria =
-                categoriaService.buscarPorNombre(nombre);
+        categoriaService.buscarPorNombre(nombre);
 
         if(categoria == null) {
 
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("Categoria no encontrada");
+        return ResponseEntity
+        .status(HttpStatus.NOT_FOUND)
+        .body("Categoria no encontrada");
         }
 
         return ResponseEntity.ok(categoria);
@@ -72,11 +72,11 @@ public class categoriaController {
             @RequestBody categoriaDTO dto) {
 
         Categoria categoria =
-                categoriaService.crearCategoria(dto);
+        categoriaService.crearCategoria(dto);
 
         return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(categoria);
+        .status(HttpStatus.CREATED)
+        .body(categoria);
     }
 
     @PutMapping("/{id}")
@@ -85,13 +85,13 @@ public class categoriaController {
             @RequestBody categoriaDTO dto) {
 
         Categoria categoria =
-                categoriaService.actualizarCategoria(id, dto);
+        categoriaService.actualizarCategoria(id, dto);
 
         if(categoria == null) {
 
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("Categoria no encontrada");
+        return ResponseEntity
+        .status(HttpStatus.NOT_FOUND)
+        .body("Categoria no encontrada");
         }
 
         return ResponseEntity.ok(categoria);
@@ -102,18 +102,18 @@ public class categoriaController {
             @PathVariable Integer id) {
 
         Categoria categoria =
-                categoriaService.buscarPorId(id);
+        categoriaService.buscarPorId(id);
 
         if(categoria == null) {
 
             return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("Categoria no encontrada");
+                .status(HttpStatus.NOT_FOUND)
+                .body("Categoria no encontrada");
         }
 
         categoriaService.eliminarCategoria(id);
 
         return ResponseEntity
-                .ok("Categoria eliminada correctamente");
+        .ok("Categoria eliminada correctamente");
     }
 }

@@ -9,7 +9,6 @@ import com.BibliotecaLagos.BibliotecaLagos.Model.Libro;
 
 @Repository
 public interface libroRepository
-        extends JpaRepository<Libro, Integer> {
-
+    extends JpaRepository<Libro, Integer> {
     Optional<Libro> findByIsbn(String isbn);
 }
