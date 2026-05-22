@@ -36,9 +36,7 @@ public class proveedorService {
         return proveedorRepository.save(proveedor);
     }
 
-    public Proveedor actualizarProveedor(
-        Integer id,
-        proveedorDTO dto) {
+    public Proveedor actualizarProveedor(Integer id, proveedorDTO dto) {
         Proveedor proveedor = proveedorRepository.findById(id).orElse(null);
 
         if(proveedor == null) {
