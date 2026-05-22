@@ -56,9 +56,9 @@ public class proveedorController {
 
         if(proveedor == null) {
 
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("Proveedor no encontrado");
+        return ResponseEntity
+        .status(HttpStatus.NOT_FOUND)
+        .body("Proveedor no encontrado");
         }
 
         return ResponseEntity.ok(proveedor);
@@ -72,23 +72,23 @@ public class proveedorController {
                 proveedorService.crearProveedor(dto);
 
         return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(proveedor);
+        .status(HttpStatus.CREATED)
+        .body(proveedor);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> actualizarProveedor(
-            @PathVariable Integer id,
-            @RequestBody proveedorDTO dto) {
+        @PathVariable Integer id,
+        @RequestBody proveedorDTO dto) {
 
         Proveedor proveedor =
-                proveedorService.actualizarProveedor(id, dto);
+        proveedorService.actualizarProveedor(id, dto);
 
         if(proveedor == null) {
 
             return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("Proveedor no encontrado");
+                .status(HttpStatus.NOT_FOUND)
+                .body("Proveedor no encontrado");
         }
 
         return ResponseEntity.ok(proveedor);
@@ -99,18 +99,18 @@ public class proveedorController {
             @PathVariable Integer id) {
 
         Proveedor proveedor =
-                proveedorService.buscarPorId(id);
+        proveedorService.buscarPorId(id);
 
         if(proveedor == null) {
 
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("Proveedor no encontrado");
+        return ResponseEntity
+        .status(HttpStatus.NOT_FOUND)
+        .body("Proveedor no encontrado");
         }
 
         proveedorService.eliminarProveedor(id);
 
         return ResponseEntity
-                .ok("Proveedor eliminado correctamente");
+        .ok("Proveedor eliminado correctamente");
     }
 }

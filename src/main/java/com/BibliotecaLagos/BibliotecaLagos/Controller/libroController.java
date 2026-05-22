@@ -18,8 +18,6 @@ public class libroController {
 
     @Autowired
     private libroService libroService;
-
-    // LISTAR TODOS LOS LIBROS
     @GetMapping
     public ResponseEntity<List<Libro>> obtenerLibros() {
 
@@ -32,7 +30,6 @@ public class libroController {
         return ResponseEntity.ok(listaLibros);
     }
 
-    // BUSCAR LIBRO POR ID
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarPorId(
             @PathVariable Integer id) {
@@ -49,7 +46,6 @@ public class libroController {
         return ResponseEntity.ok(libro);
     }
 
-    // BUSCAR LIBRO POR ISBN
     @GetMapping("/isbn/{isbn}")
     public ResponseEntity<?> buscarPorIsbn(
             @PathVariable String isbn) {
@@ -65,8 +61,6 @@ public class libroController {
 
         return ResponseEntity.ok(libro);
     }
-
-    // CREAR LIBRO
     @PostMapping
     public ResponseEntity<?> crearLibro(
             @RequestBody libroDTO dto) {
@@ -76,52 +70,49 @@ public class libroController {
             Libro libroNuevo = libroService.crearLibro(dto);
 
             return ResponseEntity
-                    .status(HttpStatus.CREATED)
-                    .body(libroNuevo);
+            .status(HttpStatus.CREATED)
+            .body(libroNuevo);
 
         } catch (Exception e) {
 
             return ResponseEntity
-                    .badRequest()
-                    .body("Error al crear el libro");
+            .badRequest()
+            .body("Error al crear el libro");
         }
     }
 
-    // ACTUALIZAR LIBRO
     @PutMapping("/{id}")
     public ResponseEntity<?> actualizarLibro(
             @PathVariable Integer id,
             @RequestBody libroDTO dto) {
 
         Libro libroActualizado =
-                libroService.actualizarLibro(id, dto);
+            libroService.actualizarLibro(id, dto);
 
         if(libroActualizado == null) {
 
             return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("Libro no encontrado");
+            .status(HttpStatus.NOT_FOUND)
+            .body("Libro no encontrado");
         }
 
         return ResponseEntity.ok(libroActualizado);
     }
 
-    // ELIMINAR LIBRO
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminarLibro(
-            @PathVariable Integer id) {
+        @PathVariable Integer id) {
 
         Libro libro = libroService.buscarPorId(id);
 
         if(libro == null) {
 
             return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("Libro no encontrado");
+            .status(HttpStatus.NOT_FOUND)
+            .body("Libro no encontrado");
         }
 
         libroService.eliminarLibro(id);
-
         return ResponseEntity.ok("Libro eliminado correctamente");
     }
 }

@@ -9,7 +9,6 @@ import com.BibliotecaLagos.BibliotecaLagos.Model.Categoria;
 
 @Repository
 public interface categoriaRepository
-        extends JpaRepository<Categoria, Integer> {
-
+    extends JpaRepository<Categoria, Integer> {
     Optional<Categoria> findByNombre(String nombre);
 }

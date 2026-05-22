@@ -1,5 +1,4 @@
 package com.BibliotecaLagos.BibliotecaLagos.Service;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,6 @@ public class proveedorService {
 
     @Autowired
     private proveedorRepository proveedorRepository;
-
     public List<Proveedor> obtenerProveedores() {
 
         return proveedorRepository.findAll();
@@ -31,21 +29,17 @@ public class proveedorService {
     public Proveedor crearProveedor(proveedorDTO dto) {
 
         Proveedor proveedor = new Proveedor();
-
         proveedor.setNombre(dto.getNombre());
         proveedor.setTelefono(dto.getTelefono());
         proveedor.setCorreo(dto.getCorreo());
         proveedor.setDireccion(dto.getDireccion());
-
         return proveedorRepository.save(proveedor);
     }
 
     public Proveedor actualizarProveedor(
-            Integer id,
-            proveedorDTO dto) {
-
-        Proveedor proveedor =
-                proveedorRepository.findById(id).orElse(null);
+        Integer id,
+        proveedorDTO dto) {
+        Proveedor proveedor = proveedorRepository.findById(id).orElse(null);
 
         if(proveedor == null) {
             return null;
@@ -55,7 +49,6 @@ public class proveedorService {
         proveedor.setTelefono(dto.getTelefono());
         proveedor.setCorreo(dto.getCorreo());
         proveedor.setDireccion(dto.getDireccion());
-
         return proveedorRepository.save(proveedor);
     }
 
