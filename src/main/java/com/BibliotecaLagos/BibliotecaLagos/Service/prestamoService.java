@@ -28,17 +28,14 @@ public class prestamoService {
         return prestamoRepository.findBySocioId(socioId);
     }
     public Prestamo crearPrestamo(prestamoDTO dto) {
-        Libro libro =
-            libroRepository.findById(dto.getLibroId())
-            .orElse(null);
+        Libro libro = libroRepository.findById(dto.getLibroId()).orElse(null);
         if(libro == null) {
             return null;
         }
         if(libro.getCantidadDisponible() <= 0) {
             return null;
         }
-        libro.setCantidadDisponible(
-            libro.getCantidadDisponible() - 1);
+        libro.setCantidadDisponible(libro.getCantidadDisponible() - 1);
 
         if(libro.getCantidadDisponible() == 0) {
             libro.setEstado("NO DISPONIBLE");
