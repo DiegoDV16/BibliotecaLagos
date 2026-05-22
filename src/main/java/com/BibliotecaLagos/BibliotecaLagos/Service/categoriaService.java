@@ -16,7 +16,6 @@ public class categoriaService {
     private categoriaRepository categoriaRepository;
 
     public List<Categoria> obtenerCategorias() {
-
         return categoriaRepository.findAll();
     }
 
@@ -40,12 +39,9 @@ public class categoriaService {
         return categoriaRepository.save(categoria);
     }
 
-    public Categoria actualizarCategoria(
-            Integer id,
-            categoriaDTO dto) {
+    public Categoria actualizarCategoria(Integer id,categoriaDTO dto) {
 
-        Categoria categoria =
-                categoriaRepository.findById(id).orElse(null);
+        Categoria categoria = categoriaRepository.findById(id).orElse(null);
 
         if(categoria == null) {
             return null;

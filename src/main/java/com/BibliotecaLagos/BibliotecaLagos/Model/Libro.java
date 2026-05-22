@@ -18,32 +18,22 @@ public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     @Column(nullable = false)
     private String titulo;
-
     @Column(nullable = false)
     private String autor;
-
     @Column(unique = true, nullable = false)
     private String isbn;
-
     private String editorial;
-
     private Integer anioPublicacion;
-
     @Column(nullable = false)
     private Integer cantidadDisponible;
-
     @Column(nullable = false)
     private Integer cantidadTotal;
-
     @Column(nullable = false)
     private Integer categoriaId;
-
     @Column(nullable = false)
     private Integer proveedorId;
-
     @Column(nullable = false)
     private String estado;
 }
