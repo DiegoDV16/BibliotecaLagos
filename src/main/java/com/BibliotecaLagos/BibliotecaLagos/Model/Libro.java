@@ -42,5 +42,8 @@ public class Libro {
     private Integer categoriaId;
 
     @Column(nullable = false)
+    private Integer proveedorId;
+
+    @Column(nullable = false)
     private String estado;
 }

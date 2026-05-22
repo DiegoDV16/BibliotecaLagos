@@ -17,4 +17,5 @@ public class libroDTO {
     private Integer anioPublicacion;
     private Integer cantidadTotal;
     private Integer categoriaId;
+    private Integer proveedorId;
 }
